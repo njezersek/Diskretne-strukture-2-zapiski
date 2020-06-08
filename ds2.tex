@@ -691,6 +691,41 @@ Množenje in seštevanje polinomov je definirano:
 \[f(x)+g(x) = (a_n+b_n)x^n + ... + (a_1 + b_1)x + (a_0 + b_0)\]
 \[f(x)g(x) = c_{n+n}x^{n+n} + ... + c_1x + c_0 \]
 \[c_i = a_0b_i + a_1+b_{i-1} + a_2b_{i-2} + ... + a_ib_0\]
+\begin{itemize}
+    \item Če je $R$ komutaitven kolobar, je tudi $R[x]$ komutativen kolobar.
+    \item Če je $R$ cel kolobar, je tudi $R[x]$ cel kolobar.
+    \item Naj bo $R[x]$ cel kolobar in $f(x),g(x) \in R[x]$ neničelna polinoma stopenj $n$ in $m$.
+    \begin{itemize}
+        \item $\textmd{deg}(f(x)+g(x)) \leq max\{n,m\}$ (ali pa je $f(x)+g(x) = 0$)
+        \item $\textmd{deg}(f(x)g(x)) = n+m$.
+    \end{itemize}
+\end{itemize}
+
+\emph{Izrek o deljenju polinomov:} Naj bo $F$ polje in $f(x), g(x) \in F[x];\ g(x) \neq 0$, potem obstajata
+enolična polinoma $q(x), r(x) \in F[x]$, da velja
+\[f(x) = g(x)\cdot \underbrace{q(x)}_\textmd{količnik} + \underbrace{r(x)}_\textmd{ostanek}\]
+Kjer je bodisi $r(x) = 0$, bodisi $\textmd{deg}(r(x)) < \textmd{deg}(g(x))$.
+
+\subsubsection{Ničle polinomov in nerazcepni polinomi}
+Naj bo $F$ polje. Tedaj je $f(x) \in F[x]$ \textbf{nerazcepen polinom}, če
+\[\forall f(x), g(x) \in F[x]\ :\ f(x) = g(x)h(x) \Rightarrow g(x) \in F\ \vee \ h(x) \in F\]
+sicer, je $f(x)$ \textbf{razcepen polinom}.
+
+Naj bo $f(x) \in F[x]$ in $b\in F$. Tedaj lahko izračunamo $f(x)$ v $b$: $f(b) = a_nb^n+...+a_0$.\\\
+
+Naj bo $F$ polje, $f(x)\in F[x]$ in $a \in F$. Potem obstaja $q(x) \in F[x]$, da
+\[f(x) = (x-a)q(x) + f(a)\]
+
+Naj bo $F$ polje in $f(x)\in F$. Če je $a \in F$ in velja $f(a) = 0$, je $a$ \textbf{ničla polinoma}.
+\[ a \textmd{ je ničla } f(x) \Leftrightarrow (x-a)|f(x)\]
+
+\begin{itemize}
+    \item Če ima $f(x)$ ničlo, je razcepen (ni pa nujno obratno).
+    \item Naj bo $F$ polje in $f(x) \in F[x]; \textmd{deg}(f(x)) \in \{2,3\}$. Potem je $f(x)$ nerazcepen natanko tedaj, ko nima ničle.
+    \item Neničeln polinom stopnje $n$ ima največ $n$ ničel iz $F$.
+\end{itemize}
+
+
 
 \end{multicols}
 \end{document}
