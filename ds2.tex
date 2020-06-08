@@ -497,5 +497,200 @@ Grupi $G$ in $H$ z izpmorfizmom $\alpha: G \to H$ imata lastnosti:
     $\vdots$
 \end{itemize}
 
+
+\subsection{Odseki grupe}
+Naj bo $G$ grupa in $H \subseteq G$ ter $a \in G$.
+\begin{equation*}
+    \begin{aligned}
+        aH = \left\{ ah : h \in H \right\}\ &\dots\ \textbf{levi odsek }\textmd{grupe $G$ po podgrupi $H$}\\
+        Ha = \left\{ ha : h \in H \right\}\ &\dots\ \textbf{desni odsek }\textmd{grupe $G$ po podgrupi $H$}\\
+    \end{aligned}
+\end{equation*}
+Lastnosti odseka:
+\begin{itemize}
+    \item $a \in aH$
+    \item $aH = H \Leftrightarrow a \in H$
+    \item bodisi velja $aH = bH$ bodisi $aH \cap bH = \emptyset$
+    \item $aH = bH \Leftrightarrow a^{-1}b \in H$
+    \item $|aH| = |bH|$
+    \item $aH = Ha \Leftrightarrow H = aHa^{-1}$
+    \item $aH \subseteq \Leftrightarrow a \in H$
+\end{itemize}
+\emph{Lagrange:} Če je $G$ končna grupa in $H \subseteq G$, potem $|H|$ deli $|G|$.
+Število, različnih levih (desnih) \emph{odsekov} po $H$ je $\frac{|G|}{|H|}$.
+
+\emph{Red} elementa končne grupe deli moč grupe.
+
+Grupa praštevilske moči je \emph{ciklična}.
+
+Če je $G$ končna grupa je $a^{|G|} = e$.
+
+\emph{Mali Fermantov izrek:} $\forall a \in \mathbb{Z}, p \in \mathbb{P}\ :\ a^p \textmd{ mod } p = a \textmd{ mod } p$.
+
+\subsection{Podgrupe edinke}
+Podgrupa $H \subseteq G$ je \textbf{edinka} ($H \lhd G$), če velja:
+\[\forall a \in G\ :\ aH = Ha\]
+ekvivalnten pogoj:
+\[\forall a \in G\ :\ aHa^{-1} = H\]
+Če sta $\{e\} \lhd G$ in $G \lhd G$ edini edinki v $G$, je $G$ \textbf{enostavna grupa}.
+
+Odseki po podgrupi edinki tvorijo grupo. Naj bo $G$ grupa in $H\subseteq G$:
+\[G/H = \left\{ aH\ :\ a \in G \right\}\ \dots\ \textbf{faktorska grupa }\textmd{grupe }G\]
+Vpeljimo operacijo v $G/H$:
+\[(aH)(bH) = abH\]
+Če je $H \lhd G$, je $G/H$ grupa.
+
+Če je $G$ grupa in $G/Z(G)$ ciklična grupa, je $G$ abelova.
+
+\subsection{Kolobarji}
+\textbf{Kolobar} je množica $R$ skupaj z dvema operacijama (oznaka: $+, \cdot$) tako, da velja:
+\begin{itemize}
+    \item $(R, +)$ je abelova grupa
+    \item $\forall a, b \in R\ :\ ab \in R$ (zaprtost)
+    \item $\forall a, b, c \in R\ :\ (ab)c = a(bc)$ (asociativnost)
+    \item $\forall a, b, c \in R\ :\ a(b+c) = ab + ac$ (distrubutivnost)
+    \item $\forall a, b, c \in R\ :\ (a+b)c = ac + bc$ (distrubutivnost)
+\end{itemize}
+Kolobar je \textbf{komutativven}, če $\forall a, b \in R\ :\ ab = ba$.
+Kolobar je \textbf{kolobar z enoto}, če $\exists 1\ \forall a \in R\ :\ \in R : 1a = a1 = a$ element $1$ je \textbf{enota kolobarja}.
+
+Če sta $R$ in $S$ kolobarja, je njuna \textbf{direktna vsota} $R \oplus S$ kartezični produkt $R \times S$ opremljena z operacijama
+\[(r,s) + (r',s') = (r+r',s+s') \quad \textmd{in} \quad (r,s)(r',s') = (rr',ss')\]
+Direktna vsota kolobarjev je tudi kolobar. \\
+Direktna vsota komutativnih kolobarjev je komutativen kolobar.\\
+Direktna vsota kolobarjev z enoto je kolobar z enoto.\\\
+
+Lastnosti kolobarjev
+\begin{itemize}
+    \item Enota $0$ kolobarja za seštevanje je enolična.
+    \item Če ima $R$ enoto $1$ za množenje, je enolična.
+    \item Za kolobar $R$ in $a, b \in R$ velja:
+    \begin{itemize}
+        \item $0a = a0 = 0$
+        \item $(-a)b = a(-b) = -(ab)$
+        \item $(-a)(-b) = ab$
+        \item Če ima $R$ enoto $1$, $(-1)a = -(1a) = -a$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Podkolobarji}
+Naj bo $R$ kolobar in $S\subseteq R$. Če je $S$ kolobar za isti operaciji kot $R$, je $S$ \textbf{podkolobar} kolobarja $R$.
+
+Ekvivalentna definicija: $S$ je podkolobar $R$ natanko tedaj, ko:
+\begin{itemize}
+    \item $0 \in S$
+    \item $\forall a, b \in S\ :\ a - b \in S$
+    \item $\forall a, b \in S\ :\ ab \in S$
+\end{itemize}
+
+\subsubsection{Center kolobarja}
+\textbf{Center} kolobarja $R$ je
+\[\left\{ x \in R\ :\ ax = xa\quad \forall a \in R\right\}\]
+Center kolobarja $R$ je tudi njegov podkolobar.
+
+\subsubsection{Delitelji niča in celi kolobarji}
+Naj bo $R$ komutativen koloboar. Tedaj je $a \in R,\ a \neq 0$ \textbf{delitelj niča}, če
+\[ \exists b \in R,\ b \neq 0\ :\ ab = 0 \]
+
+\textbf{Cel kolobar} je komutativen kolobar z enoto ($1\neq0$), ki nima deliteljev niča.
+
+\emph{Pravilo krajšanja:} Če je $R$ cel kolobar, potem velja $ab = ac,\ a \neq 0 \Rightarrow b = c$.
+
+\subsection{Polja in obsegi}
+Komutaiteven obseg z enoto ($1 \neq 0$) je \textbf{polje}, če je vsak element različen od $0$ obrnljiv. 
+
+Polju, ki pa ni komutativno, pravimo \textbf{obseg}.
+
+Polje je cel kolobar (obratno pa ni nujno).
+
+Če je $R$ končen cel kolobar, je $R$ polje.
+
+Naslednje trditve so ekvivalentne:
+\begin{itemize}
+    \item $\mathbb{Z}_n$ je cel kolobar
+    \item $\mathbb{Z}_n$ je polje
+    \item $n$ je prašetevilo
+\end{itemize}
+
+\subsubsection{Podpolja}
+Če je $F$ polje, je $K \subseteq F$ podpolje v $F$ natoanko tedaj, ko:
+\begin{itemize}
+    \item $1 \in K$
+    \item $\forall a,b \in K \ :\ a - b \in K$
+    \item $\forall a,b \in K,\ b\neq 0 \ :\ ab^{-1} \in K$
+\end{itemize}
+
+\subsubsection{Karakteristika kolobarja}
+Če je $R$ kolobar, $a \in R$ in $n \in \mathbb{n}$, pišemo
+\[na = \underbrace{a+a+...+a}_{n\textmd{-krat}}\] 
+
+\textbf{Karakteristika} kolobarja $R$ je najmanjši $n\in \mathbb{N}$, tako da velja 
+\[\forall a \in R\ :\ na = 0\]
+Če tak $n$ ne obstaja je karakteristika enaka $0$. \emph{Oznaka:} $\textmd{char}R$
+
+Naj bo $R$ kolobar ze enoto. Tedaj velja:
+\begin{itemize}
+    \item Če je red $1$ v grupi $(R, +)$ enak $n < \infty$, je $\textmd{char}R = n$.
+    \item Če pa ima $1$ v grupi $(R, +)$ neskončen red, je $\textmd{char}R = 0$.
+\end{itemize}
+
+Če je $R$ cel kolobar, je $\textmd{char}R \in {0} \cup \mathbb{P}$.
+
+
+\subsubsection{Ideali}
+imajo pri kolobarjih podobno vlogo kot podgrupe edinke pri grupah.
+
+Podkolobar $I$ kolobarja $R$ je \textbf{ideal}, če
+\[\forall i \in I; \forall r \in R\ :\ ir \in I\ \wedge ri \in I\]
+
+Če je $R$ kolobar in $I \subseteq R$, je $I$ ideal natanko tedaj, ko velja:
+\begin{itemize}
+    \item $0 \in I$
+    \item $\forall i,j \in I\ :\ i-j \in I$
+    \item $\forall i \in I; \forall r \in R\ :\ ir \in I\ \wedge ri \in I$
+\end{itemize}
+
+Če je $R$ kolobar z enoto in ideal $I$ vsebuje obrnljiv element, je $I = R$.
+Če je $F$ polje, sta njegova edina ideala $F$ in $\{0\}$.
+
+
+Naj bosta $I$ in $J$ ideala v kolobarju $R$. Definirajmo operaciji:
+\begin{itemize}
+    \item $I+J = \left\{ i+j\ :\ i \in I,\ j\in J \right\}$
+    \item $IJ = \left\{i_1j_1 + ... + i_nj_n : i_k \in I,\ j_k \in J,\ n \in \mathbb{N}\right\}$
+\end{itemize}
+Če sta $I$ in $J$ ideala v $R$, potem je
+\begin{itemize}
+    \item $I+J$ ideala v $R$
+    \item $IJ$ ideala v $R$
+\end{itemize}
+
+Naj bo $I$ ideal kolobarja $R$. Tedaj je množica levih odsekov
+\[R/I = \left\{ a+I\ :\ a \in R \right\}\]
+skupaj z operacijama
+\[(a+I) + (b+I) = a+b+I\]
+\[(a+I)(b+I) = ab+I\]
+\textbf{faktorski kolobar}.
+
+\subsection{Kolobarji polinomov}
+Naj bo $R$ komutativen kolobar. Tedaj je
+\[R[x] = \left\{ a_nx^n + ... + a_1x + a_0\ :\ a_i \in R, n \in \mathbb{N}_0 \right\}\]
+\textbf{kolobar polinomov} nad $R$.
+
+\textbf{Stopnja} polinoma $f(x) \in R[x]$ je $m$, če $a_m \neq 0$ in $a_i = 0$ za vse $i>m$.
+
+$a_m$ je tedaj \textbf{vodilni koeficient}, $a_mx^m$ pa \textbf{vodilni člen}.
+
+Ničelni polinom $0$ nima niti stopnje, niti vodilnega člena ali koeficienta.
+
+Konstantni polinom $f(x) = a_0$ je bodisi ničelni, bodisi ima stopnjo $0$.
+
+Množenje in seštevanje polinomov je definirano:
+\[f(x) = a_nx^n + ... + a_0\]
+\[g(x) = b_nx^n + ... + b_0\]
+\[f(x)+g(x) = (a_n+b_n)x^n + ... + (a_1 + b_1)x + (a_0 + b_0)\]
+\[f(x)g(x) = c_{n+n}x^{n+n} + ... + c_1x + c_0 \]
+\[c_i = a_0b_i + a_1+b_{i-1} + a_2b_{i-2} + ... + a_ib_0\]
+
 \end{multicols}
 \end{document}
