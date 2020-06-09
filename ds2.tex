@@ -4,11 +4,36 @@
 \usepackage{calc}
 \usepackage{ifthen}
 \usepackage{tabularx}
+\usepackage{listings}
+\usepackage{caption}
 \usepackage[utf8]{inputenc}
 \usepackage[landscape]{geometry}
 \usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
 \usepackage{accents}
 \newcommand{\vect}[1]{\accentset{\rightharpoonup}{#1}}
+
+
+\DeclareCaptionLabelFormat{algocaption}{Algorithm \thenalg} % defines a new caption label as Algorithm x.y
+
+\lstnewenvironment{algorithm}[1][] %defines the algorithm listing environment
+{   
+    %\refstepcounter{nalg} %increments algorithm number
+    %\captionsetup{labelformat=algocaption,labelsep=colon} %defines the caption setup for: it ises label format as the declared caption label above and makes label and caption text to be separated by a ':'
+    \lstset{ %this is the stype
+        mathescape=true,
+        %frame=tB,
+        %numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\scriptsize, 
+        keywordstyle=\color{black}\bfseries\em,
+        keywords={,vhod, izhod, vrni, dokler, izvajaj, konec, zanke} %add the keywords you want, or load a language as Rubens explains in his comment above.
+        %numbers=left,
+        %xleftmargin=.04\textwidth,
+        %#1 % this is to add specific settings to an usage of this environment (for instnce, the caption and referable label)
+    }
+}
+{}
+
 
 \ifthenelse{\lengthtest { \paperwidth = 11in}}
     { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
@@ -418,20 +443,33 @@ Recimo, da je $a$ obrnljiv:
 \subsubsection{Množica $\mathbb{Z}_m$}
 $\mathbb{Z}_m = \{0,1,...,m-1\}$
 
-Vpeljemo seštevanje $+_m$ po modulu $m$ in množenje $\cdot_m$ po modulu $m$. Dobimo grupo $(\mathbb{Z}_m, +_m)$ in monoid $(\mathbb{Z}_m, \cdot_m)$.
+Vpeljemo seštevanje $+_m$ po modulu $m$ in množenje $\cdot_m$ po modulu $m$. 
+Dobimo grupo $(\mathbb{Z}_m, +_m)$ in monoid $(\mathbb{Z}_m, \cdot_m)$.
 
-\subsubsection{Cayleyeva tabela}
-Za vsak element množice imamo en stolpec in eno vrstico. V vsakem polju je produkt elementa stolpca in elementa vrstice.
+Red elementa $x\in \mathbb{Z}_m$ je $\frac{m}{\gcd(m,x)}$
+
+\subsubsection{Množica $\mathbb{Z}_m^*$}
+To je množica vseh obrnljivih elementov v $\mathbb{Z}_m$.
+\[|\mathbb{Z}_m| = \varphi(m)\]
+Element $x\in \mathbb{Z}_m$ je obrnljiv če se da rešiti \emph{diofantsko enačbo}:
+\[ xy + km = 1\]
+za neznanki $y$ (inverz od $x$) in $k$.
+
+\subsubsection{Cayleyjeva tabela}
+Za vsak element množice imamo en stolpec in eno vrstico. V vsakem polju je produkt elementa vrstice in elementa stolpca.
+(Presek vrstice $a$ in stolpca $b$ je $ab$)
 
 \subsubsection{Red elementa}
 Naj bo $(G,\cdot)$ grupa. Red elemneta $a$ je najmanjše naravno število $n \in \mathbb{N}$, da velja
 \[a^n = e\]
-Če je grupa končna, tak eksponent vedno obstaja. Pri neskončnih grupah pa je red $\infty$, če tak $n$ ne obstaja.
+Če je grupa končna, tak eksponent vedno obstaja (red elementa deli moč grupe). 
+
+Pri neskončnih grupah pa je red $\infty$, če tak $n$ ne obstaja.
 
 Red enote je 1. Enota je tudi edini element grupe, ki ima red 1.
 
 \subsection{Podgurpe}
-Naj bo $(G, \cdot)$ grupa. Tedaj je $H \subseteq G$ podgrupa, je je $(H,\cdot)$ grupa.
+Naj bo $(G, \cdot)$ grupa. Tedaj je $H \subseteq G$ podgrupa, ko je $(H,\cdot)$ grupa.
 
 Če je $H$ podgrupa $G$ in $H \neq G$ pišemo $H \subset G$ (\textbf{prava podgrupa}).
 
@@ -456,6 +494,10 @@ Podgrupa $(\langle a \rangle, \cdot)$ je \textbf{ciklična} podgrupa v $G$ gener
 \[a^n = e\ \wedge\ a^k = e \Rightarrow n | k \]
 Naj bo $G = \langle a \rangle$ ciklična grupa reda $n$. Potem je
 \[G = \langle a^k \rangle \Leftrightarrow \gcd (n,k) = 1 \]
+in
+\[|\langle a \rangle | = n\]
+Če je v $\langle \rangle$ več elemnetov, je to množica vseh njihovih potenc in produktov teh potenc.
+\[\langle a,b \rangle = \{xy \textmd{ in } yx: x \in \langle a \rangle;  y \in \langle b \rangle \}\]
 
 \subsubsection{Center grupe}
 Naj bo $(G,\cdot )$ grupa. Potem je \textbf{center} grupe $Z(G)$ podmnožica elementov, ki komutirajo z vsemi elementi v $G$:
@@ -467,7 +509,11 @@ Center grupe $G$ je tudi podgrupa $G$:
 \begin{itemize}
     \item \textbf{Permutacija} množice $A$ je bijektivna funkcija $\pi: A \to A$.
     \item \textbf{Permutacijska grupa} na množici $A$ je množica premutaciji množice $A$, ki tvorijo grupo za komponiranje funkciji.
-    \item \textbf{Simetrična grupa} $S_n$ je permutacijska grupa na $[n]$, ki vsebuje vse permutacije množice $[n]$.
+    \item \textbf{Simetrična grupa} $S_n$ je permutacijska grupa na $[n]$, ki vsebuje vse permutacije množice $[n]$ ($|S_n| = n!$).
+    \item Red permutacije je $lcm(\textmd{dolžine disjunktnih ciklov})$.
+    \item Disjunktni cikli permutaciej komutirajo.
+    \item Vsako permutacijo lahko zapišemo kot produkt transpozicij.
+    \item Če je število transpozicij sodo je permutacija soda, drugače je liha.
     \item \textbf{Alternirajoča grupa} $A_n$ je grupa vseh sodih permutaciji množice $[n]$
     \[A_n \subseteq S_n \]
     \[\forall n > 1\ :\ |A_n| \frac{n!}{2} \]
@@ -490,7 +536,7 @@ Grupi $G$ in $H$ z izpmorfizmom $\alpha: G \to H$ imata lastnosti:
 \begin{itemize}
     \item $\alpha$ preslika enoto $G$ v enoto $H$.
     \item $\forall a \in G, n \in \mathbb{Z}\ :\ \alpha(a^n) = \left( \alpha(a) \right)^n$
-    \item $\forall a,b \in G : a \textmd{in} b \textmd{komutirata} \Leftrightarrow \alpha(a) \textmd{in} \alpha(b) \textmd{komutirata}$
+    \item $\forall a,b \in G : a \textmd{ in } b \textmd{ komutirata } \Leftrightarrow \alpha(a) \textmd{ in } \alpha(b) \textmd{ komutirata }$
     \item $G$ je abelova $\Leftrightarrow$ $H$ je abelova
     \item $G$ je ciklična $\Leftrightarrow$ $H$ je ciklična
     \item $K \subseteq G$ $\Rightarrow$ $\alpha(K) \subseteq H$\\
@@ -517,7 +563,8 @@ Lastnosti odseka:
     \item $aH \subseteq \Leftrightarrow a \in H$
 \end{itemize}
 \emph{Lagrange:} Če je $G$ končna grupa in $H \subseteq G$, potem $|H|$ deli $|G|$.
-Število, različnih levih (desnih) \emph{odsekov} po $H$ je $\frac{|G|}{|H|}$.
+
+Število različnih levih (desnih) \emph{odsekov} po $H$ je $\frac{|G|}{|H|}$.
 
 \emph{Red} elementa končne grupe deli moč grupe.
 
@@ -725,6 +772,39 @@ Naj bo $F$ polje in $f(x)\in F$. Če je $a \in F$ in velja $f(a) = 0$, je $a$ \t
     \item Neničeln polinom stopnje $n$ ima največ $n$ ničel iz $F$.
 \end{itemize}
 
+
+\subsection{Euljerjeva funkcija}
+Euljerjeva funkcija nam pove koliko je obrnlivih elementov v $\mathbb{Z}_m$.
+Za $n \in \mathbb{N}$ s paraštevilskim razcepom $ n = p_1^{\alpha_1} \cdot ... \cdot p_m^{\alpha_m}$ velja:
+\[\varphi(n) = \varphi(p_1^{\alpha_1}) \cdot ... \cdot \varphi(p_m^{\alpha_m}) = n \prod_{ p_k \in \mathbb{P}} \left(1-\frac{1}{p_k} \right) \]
+
+
+\subsection{Linearne diofantske enačbe}
+Diofantska enačba $ax + by = c$ ima rešitev $\Leftrightarrow$ $gcd(a, b) | c$. 
+
+Če ima eno rešitev $(x_0, y_0) \in \mathbb{Z}^2$ ima neskončno množico rešitev:
+\[\{(x_k, y_k) : k \in \mathbb{Z}\}\]
+\[x_k = x_0 - k\frac{b}{\textrm{gcd(a, b)}}\]
+\[y_k = y_0 + k\frac{a}{\textrm{gcd(a, b)}}\]
+
+
+\subsubsection{Razširjen evklidov algoritem}
+\begin{algorithm}
+vhod: $(a, b)$
+($r_0$, $x_0$, $y_0$) = ($a$, 1, 0)
+($r_1$, $x_1$, $y_1$) = ($b$, 0, 1)
+$i$ = 1
+
+dokler $r_i$ $\neq$ 0:
+    $i$ = $i$+1
+    $k_i$ = $r_{i-2} // r_{i-1}$
+    $(r_i, x_i, y_i)$ = $(r_{i-2}, x_{i-2}, y_{i-2}) - k_i(r_{i-1}, x_{i-1}, y_{i-1})$
+konec zanke
+vrni: $(r_{i-1}, x_{i-1}, y_{i-1})$
+\end{algorithm}
+
+Naj bosta $a, b \in \mathbb{Z}$. Tedaj trojica $(d, x, y)$, ki jo vrne razširjen evklidov algoritem z vhodnim podatkomk $(a, b)$, zadošča:
+\[ax + by = d \text{ in } d = \textrm{gcd}(a, b)\] 
 
 
 \end{multicols}
