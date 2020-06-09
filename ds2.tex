@@ -186,7 +186,7 @@ Podgrafom, ki jih inducirajo ti ekvivalenčni razredi, rečemo \textbf{komponent
 Graf $G$ je \textbf{dvodelen}, če obstaja razdelitev množice $V(G)$ v množici $A$ in $B$, tako, da
 ima vsaka povezava iz $E(G)$ eno krajišče v $A$ in drugo v $B$.
 \[V(G) = A \cup B \quad \textmd{in}\quad A \cap B = \emptyset\]
-Dvodelen graf ne vsebuje lihih ciklov. 
+Graf je dvodelen $\Leftrightarrow$ ne vsebuje lihih ciklov. 
 
 \subsection{Morfizmi grafov}
 \begin{itemize}
@@ -360,8 +360,9 @@ Očitno je $f(G) \geq g(G)$.
 Naj bo $G$ ravninski graf vložen v ravnino:
 \[|V(G)| - |E(G)| + |F(G)| = 1+|\Omega(G)| \]
 
-Če je $G$ povezan ravninski graf, ki ni drevo ($ g(G) \neq \infty $), velja
+Če je $G$ povezan ravninski graf, ki ni drevo ($ g(G) \neq \infty $), $\Rightarrow$
 \[ |E(G)| \leq \frac{g(G)}{g(G)-2}(|V(G)| -2) \]
+\emph{Če to ne velja graf ni ravninski, obratno pa ni nujno res.}
 Ker je $g(G) \geq 3$, velja
 \[ |E(G)| \leq 3|V(G)| - 6\]
 Če $G$ nima trikotnikov ($g(G) \geq 4$), velja
@@ -449,8 +450,8 @@ Dobimo grupo $(\mathbb{Z}_m, +_m)$ in monoid $(\mathbb{Z}_m, \cdot_m)$.
 Red elementa $x\in \mathbb{Z}_m$ je $\frac{m}{\gcd(m,x)}$
 
 \subsubsection{Množica $\mathbb{Z}_m^*$}
-To je množica vseh obrnljivih elementov v $\mathbb{Z}_m$.
-\[|\mathbb{Z}_m| = \varphi(m)\]
+To je množica vseh obrnljivih elementov v $\mathbb{Z}_m$ (operacija: množenje).
+\[|\mathbb{Z}^*_m| = \varphi(m)\]
 Element $x\in \mathbb{Z}_m$ je obrnljiv če se da rešiti \emph{diofantsko enačbo}:
 \[ xy + km = 1\]
 za neznanki $y$ (inverz od $x$) in $k$.
@@ -564,7 +565,7 @@ Lastnosti odseka:
 \end{itemize}
 \emph{Lagrange:} Če je $G$ končna grupa in $H \subseteq G$, potem $|H|$ deli $|G|$.
 
-Število različnih levih (desnih) \emph{odsekov} po $H$ je $\frac{|G|}{|H|}$.
+Število različnih levih (desnih) \emph{odsekov} po $H$ je $\frac{|G|}{|H|}$ (\textbf(index podgurpe)).
 
 \emph{Red} elementa končne grupe deli moč grupe.
 
